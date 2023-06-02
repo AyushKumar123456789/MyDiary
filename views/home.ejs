@@ -1,12 +1,14 @@
 <%- include('partials/header'); -%>
-<h1>Home</h1>
-<p><%= home_content %></p>
+<h1 style="font-family: 'Kalam', cursive;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Ubuntu', sans-serif; color: #000000;">Home</h1>
+<p style="color: #393646; font-family: cursive; font-weight: bold;">Welcome to your personal note repository! This is where you can store all your thoughts, ideas, and important information in one secure place. Feel free to create, edit, and organize your notes to keep track of your valuable insights and reflections. Start jotting down your thoughts and let myDiary be your trusted companion on your journey of self-expression and growth</p>
 <% post_content.forEach(function(post) { %>
     <div class="card mb-3">
       <div class="card-body">
         <!-- Render post details -->
-        <h3 class="card-title"><%= post.Title %></h3>
-      <%= post.content.substring(0,100)+" .... "  %>
+        <h3 class="card-title" style="color: #00C4FF;" ><%= post.Title %></h>
+   <%= post.content.substring(0,100)+" .... "  %>
 <a href="/posts/<%= post._id %>">ReadMore</a>
         
       <!-- Delete button -->
