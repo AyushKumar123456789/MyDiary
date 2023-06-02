@@ -44,6 +44,7 @@ const postSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   Title: String,
   content: String
+  
 });
 
 const Data = mongoose.model('Data', postSchema);
@@ -217,6 +218,25 @@ app.get("/posts/:postId",function(req,res){
     console.log(err);
   });
 });
+
+//Post Delet route
+
+app.post("/posts/:postId/delete", function (req, res) {
+  const postId = req.params.postId;
+  
+  // Update the post's `isDeleted` field to true
+  Data.findByIdAndDelete(postId)
+    .then(function () {
+      console.log("Post is deleted!");
+      res.redirect("/home");
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.redirect("/home");
+    });
+});
+
+
   
 //TO do LIST/////////////////////////////////////////////////////////////////
 //TO do LIST/////////////////////////////////////////////////////////////////

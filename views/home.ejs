@@ -1,11 +1,21 @@
 <%- include('partials/header'); -%>
 <h1>Home</h1>
 <p><%= home_content %></p>
-<% post_content.forEach(function(post){ %>
-    <h1> <%=  post.Title  %>  </h1>
-
-<%= post.content.substring(0,100)+" .... "  %>
+<% post_content.forEach(function(post) { %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <!-- Render post details -->
+        <h3 class="card-title"><%= post.Title %></h3>
+      <%= post.content.substring(0,100)+" .... "  %>
 <a href="/posts/<%= post._id %>">ReadMore</a>
-
-<% });  %>
-<%- include('partials/footer'); -%>
+        
+      <!-- Delete button -->
+<form class="float-end" action="/posts/<%= post._id %>/delete" method="POST">
+    <input type="hidden" name="_method" value="DELETE"> <!-- Add this line -->
+    <button class="btn btn-danger" type="submit">Delete</button>
+  </form>
+  
+      </div>
+    </div>
+  <% }); %>
+  
