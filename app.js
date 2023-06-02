@@ -37,7 +37,7 @@ app.use(passport.session());
 
 
 //MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/BlogDB');//setting up mongoodb
+mongoose.connect('mongodb+srv://ayushmj970:asdf@cluster0.zbhkt38.mongodb.net/BlogDB');//setting up mongoodb
 
 
 const postSchema = new mongoose.Schema({
