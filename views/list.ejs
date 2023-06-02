@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MY-DIARY</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/List_styles.css">
+  </head>
+  <link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon">
+  
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <p class="navbar-brand">MY_DIARY</p>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- 6 -->
+          <li id="home"><a href="/home">HOME</a></li>
+          <li id="compose"><a href="/COMPOSE">CREATE NOTE</a></li>
+          <li id="To-doList"><a href="/list">TO-DO</a></li>
+          <li id="about"><a href="/about">ABOUT US</a></li>
+          <li id="logout" class="logout-link"><a href="/logout">LOG OUT</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="box" id="heading">
+    <h1><%= listTitle %></h1>
+    </div>
+    <div class="box">
+    
+    
+        <% newListItems.forEach(function(item){ %>
+          <form action="/delete" method="post" >
+          <div class="item">
+            <input type="checkbox" onchange="this.form.submit()" value="<%= item._id %>" name="checkbox">
+            <p><%=item.name %></p>
+          </div>
+          <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+        </form>  
+        <% }) %>
+    
+    <form class="item" action="/list" method="post">
+      <input type="text" name="newItem" placeholder="New Item" autocomplete="off" />
+      <button type="submit" name="list" value="<%= listTitle %>">+</button>
+    </form>
+    </div>
+  </body>
+</html>
